@@ -8,6 +8,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
+import in.strikes.aopDemo.dto.Student;
+
 @Component
 @Aspect
 public class LoggingAspect {
@@ -28,13 +30,14 @@ public class LoggingAspect {
         
 
 
-    @AfterReturning(value= "execution(String in.strikes.aopDemo.service.StudentService.createStudent())", returning ="result")
-    public String  logAfterReturningMethod(String result){
+    @AfterReturning(value= "execution(in.strikes.aopDemo.dto.Student in.strikes.aopDemo.service.StudentService"+".createStudent(in.strikes.aopDemo.dto.Student))", returning ="result")
+    public void  logAfterReturningMethod( Student result){
+
+        result.setName("Aditya");
+        result.setAge(21);
 
         
         System.out.println("Returned target : "+ result);
-
-        return "Aditya Saved";
 
          
     }

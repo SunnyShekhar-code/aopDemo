@@ -2,9 +2,11 @@ package in.strikes.aopDemo.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import in.strikes.aopDemo.dto.Student;
 import in.strikes.aopDemo.service.StudentService;
 
 @RestController
@@ -16,8 +18,8 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createStudent(){
-        String s= studentService.createStudent();
+    public ResponseEntity<Student> createStudent(@RequestBody Student student){
+        Student s= studentService.createStudent(student);
         return ResponseEntity.ok(s);
 
     }
