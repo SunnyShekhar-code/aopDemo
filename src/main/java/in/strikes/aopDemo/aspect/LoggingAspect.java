@@ -16,6 +16,7 @@ public class LoggingAspect {
         System.out.println("Student creation is going to happen"+" "+arr[0]);
 
         
+
         // try{
         //     throw new RuntimeException("runtime exception occur in aspect class");
         // }catch (Exception e) {
