@@ -28,12 +28,15 @@ public class LoggingAspect {
         
 
 
-    @AfterReturning("execution(String in.strikes.aopDemo.service.StudentService.createStudent())")
-    public void logAfterReturningMethod(JoinPoint joinPoint){
-        // Object [] arr=joinPoint.getArgs();
-        Object result=joinPoint.getTarget();
-        System.out.println("log from AfterReturning"+" "+result);
+    @AfterReturning(value= "execution(String in.strikes.aopDemo.service.StudentService.createStudent())", returning ="result")
+    public String  logAfterReturningMethod(String result){
+
         
+        System.out.println("Returned target : "+ result);
+
+        return "Aditya Saved";
+
+         
     }
 
     // @AfterThrowing("execution(String in.strikes.aopDemo.service.StudentService.createStudent())")
