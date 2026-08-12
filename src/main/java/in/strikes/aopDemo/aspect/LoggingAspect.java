@@ -11,17 +11,16 @@ public class LoggingAspect {
 
     @Before("execution(String in.strikes.aopDemo.service.StudentService.createStudent())")
     public void logBeforeMethod(JoinPoint joinPoint){
-
         Object [] arr=joinPoint.getArgs();
-        System.out.println("Student creation is going to happen"+" "+arr[0]);
+        System.out.println("Student creation is going to happen");
 
-        
 
-        // try{
-        //     throw new RuntimeException("runtime exception occur in aspect class");
-        // }catch (Exception e) {
-        //     // TODO: handle exception
-        // }
+
+        try{
+            throw new RuntimeException("runtime exception occur in aspect class");
+        }catch (Exception e) {
+            // TODO: handle exception
+        }
         
     }
     

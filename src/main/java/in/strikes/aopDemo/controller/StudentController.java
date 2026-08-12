@@ -17,7 +17,7 @@ public class StudentController {
 
     @PostMapping
     public ResponseEntity<String> createStudent(){
-        String s= studentService.createStudent("Ram");
+        String s= studentService.createStudent();
         return ResponseEntity.ok(s);
 
     }
