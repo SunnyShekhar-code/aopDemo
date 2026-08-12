@@ -10,8 +10,8 @@ public class StudentService {
     public Student createStudent(Student student){
         String s="Saved Student";
         System.out.println(s);
-        // throw new RuntimeException("runtime exception occur in StudentService classs");
-        return student;
+        throw new RuntimeException("runtime exception occur in StudentService classs");
+        // return student;
     }
     
 }

@@ -30,24 +30,24 @@ public class LoggingAspect {
         
 
 
-    @AfterReturning(value= "execution(* in.strikes.aopDemo.service.StudentService.createStudent(..))", returning ="result")
-    public void  logAfterReturningMethod( Student result){
+    // @AfterReturning(value= "execution(* in.strikes.aopDemo.service.StudentService.createStudent(..))", returning ="result")
+    // public void  logAfterReturningMethod( Student result){
 
-        result.setName("Aditya");
-        result.setAge(21);
+    //     result.setName("Aditya");
+    //     result.setAge(21);
 
         
-        System.out.println("Returned target : "+ result.toString());
+    //     System.out.println("Returned target : "+ result.toString());
 
          
-    }
-
-    // @AfterThrowing("execution(String in.strikes.aopDemo.service.StudentService.createStudent())")
-    // public void logAfterThrowingMethod(JoinPoint joinPoint){
-        
-    //     System.out.println("log from AfterThrowing");
-        
     // }
+
+    @AfterThrowing("execution(* in.strikes.aopDemo.service.StudentService.createStudent(..))")
+    public void logAfterThrowingMethod(){
+        
+        System.out.println("log from AfterThrowing");
+        
+    }
 
     // @After("execution(String in.strikes.aopDemo.service.StudentService.createStudent())")
     // public void logAfterMethod(JoinPoint joinPoint){
