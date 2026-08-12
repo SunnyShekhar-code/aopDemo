@@ -1,6 +1,7 @@
 package in.strikes.aopDemo.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -9,19 +10,31 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LoggingAspect {
 
-    @Before("execution(String in.strikes.aopDemo.service.StudentService.createStudent())")
-    public void logBeforeMethod(JoinPoint joinPoint){
-        Object [] arr=joinPoint.getArgs();
-        System.out.println("Student creation is going to happen");
+    // @Before("execution(String in.strikes.aopDemo.service.StudentService.createStudent())")
+    // public void logBeforeMethod(JoinPoint joinPoint){
+    //     Object [] arr=joinPoint.getArgs();
+    //     System.out.println("Student creation is going to happen");
 
 
 
-        try{
-            throw new RuntimeException("runtime exception occur in aspect class");
-        }catch (Exception e) {
-            // TODO: handle exception
-        }
+    //     try{
+    //         throw new RuntimeException("runtime exception occur in aspect class");
+    //     }catch (Exception e) {
+    //         // TODO: handle exception
+    //     }
+// }
+        
+
+
+    @AfterReturning("execution(String in.strikes.aopDemo.service.StudentService.createStudent())")
+    public void logAfterReturningMethod(JoinPoint joinPoint){
+        // Object [] arr=joinPoint.getArgs();
+        Object result=joinPoint.getTarget();
+        System.out.println("log from AfterReturning"+"' "+result);
+
+        
         
     }
-    
+
+
 }
