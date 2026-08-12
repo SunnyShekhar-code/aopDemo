@@ -42,18 +42,18 @@ public class LoggingAspect {
          
     // }
 
-    @AfterThrowing("execution(* in.strikes.aopDemo.service.StudentService.createStudent(..))")
-    public void logAfterThrowingMethod(){
-        
-        System.out.println("log from AfterThrowing");
-        
-    }
-
-    // @After("execution(String in.strikes.aopDemo.service.StudentService.createStudent())")
-    // public void logAfterMethod(JoinPoint joinPoint){
-    //     System.out.println("log from After");
+    // @AfterThrowing(value="execution(* in.strikes.aopDemo.service.StudentService.createStudent(..))", throwing="exception")
+    // public void logAfterThrowingMethod(Throwable exception){
+    //     System.out.println(exception.getClass().getName()+" message :"+exception.getMessage());
+    //     System.out.println("log from AfterThrowing");
         
     // }
+
+    @After(value="execution(* in.strikes.aopDemo.service.StudentService.createStudent(..))")
+    public void logAfterMethod(JoinPoint joinPoint){
+        System.out.println("log from After");
+        
+    }
 
 
 }
