@@ -1,7 +1,9 @@
 package in.strikes.aopDemo.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -30,11 +32,22 @@ public class LoggingAspect {
     public void logAfterReturningMethod(JoinPoint joinPoint){
         // Object [] arr=joinPoint.getArgs();
         Object result=joinPoint.getTarget();
-        System.out.println("log from AfterReturning"+"' "+result);
-
-        
+        System.out.println("log from AfterReturning"+" "+result);
         
     }
+
+    // @AfterThrowing("execution(String in.strikes.aopDemo.service.StudentService.createStudent())")
+    // public void logAfterThrowingMethod(JoinPoint joinPoint){
+        
+    //     System.out.println("log from AfterThrowing");
+        
+    // }
+
+    // @After("execution(String in.strikes.aopDemo.service.StudentService.createStudent())")
+    // public void logAfterMethod(JoinPoint joinPoint){
+    //     System.out.println("log from After");
+        
+    // }
 
 
 }
