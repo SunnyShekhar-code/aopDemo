@@ -30,14 +30,14 @@ public class LoggingAspect {
         
 
 
-    @AfterReturning(value= "execution(in.strikes.aopDemo.dto.Student in.strikes.aopDemo.service.StudentService"+".createStudent(in.strikes.aopDemo.dto.Student))", returning ="result")
+    @AfterReturning(value= "execution(* in.strikes.aopDemo.service.StudentService.createStudent(..))", returning ="result")
     public void  logAfterReturningMethod( Student result){
 
         result.setName("Aditya");
         result.setAge(21);
 
         
-        System.out.println("Returned target : "+ result);
+        System.out.println("Returned target : "+ result.toString());
 
          
     }
