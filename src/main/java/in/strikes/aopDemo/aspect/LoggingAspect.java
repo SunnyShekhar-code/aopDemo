@@ -1,9 +1,11 @@
 package in.strikes.aopDemo.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -49,10 +51,31 @@ public class LoggingAspect {
         
     // }
 
-    @After(value="execution(* in.strikes.aopDemo.service.StudentService.createStudent(..))")
-    public void logAfterMethod(JoinPoint joinPoint){
-        System.out.println("log from After");
+    // @After(value="execution(* in.strikes.aopDemo.service.StudentService.createStudent(..))")
+    // public void logAfterMethod(JoinPoint joinPoint){
+    //     System.out.println("log from After");
         
+    // }
+
+    @Around(value="execution(* in.strikes.aopDemo.service.StudentService.createStudent(..))")
+    public Student logAfterMethod(ProceedingJoinPoint joinPoint)throws Throwable{
+
+        try{
+            System.out.println("Started execution"+" "+joinPoint.getSignature().getName());
+            Student result=(Student)joinPoint.proceed();
+            System.out.println("finished execution"+" "+joinPoint.getSignature().getName());
+            result.setName(result.getName().toUpperCase());
+            
+            return result;
+
+        }catch(Exception e){
+            System.out.println("Exception occured :"+e.getMessage());
+            // return null;
+            throw new RuntimeException("Exception thrown");
+        }finally{
+            System.out.println("Execution Completed Successfully");
+        }
+
     }
 
 
