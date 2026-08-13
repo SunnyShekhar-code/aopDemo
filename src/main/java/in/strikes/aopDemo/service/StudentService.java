@@ -13,5 +13,10 @@ public class StudentService {
         throw new RuntimeException("Execution failed");
         // return student;
     }
+
+    public String dummyMethod(String s){
+        System.out.println("dummy method called");
+        return s;
+    }
     
 }

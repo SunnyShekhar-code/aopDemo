@@ -57,20 +57,51 @@ public class LoggingAspect {
         
     // }
 
-    @Around(value="execution(* in.strikes.aopDemo.service.StudentService.createStudent(..))")
-    public Student logAfterMethod(ProceedingJoinPoint joinPoint)throws Throwable{
+    // @Around(value="execution(* in.strikes.aopDemo.service.StudentService.createStudent(..))")
+    // public Student logAfterMethod(ProceedingJoinPoint joinPoint)throws Throwable{
+
+    //     try{
+    //         System.out.println("Started execution"+" "+joinPoint.getSignature().getName());
+    //         Student result=(Student)joinPoint.proceed();
+    //         System.out.println("finished execution"+" "+joinPoint.getSignature().getName());
+    //         result.setName(result.getName().toUpperCase());
+            
+    //         return result;
+
+    //     }catch(Exception e){
+    //         System.out.println("Exception occured :"+e.getMessage());
+    //         // return null;
+    //         throw new RuntimeException("Exception thrown");
+    //     }finally{
+    //         System.out.println("Execution Completed Successfully");
+    //     }
+
+    // }
+
+    @Around(value="execution(* in.strikes.aopDemo.service.StudentService.dummyMethod(..))")
+    public String logAfterMethod(ProceedingJoinPoint joinPoint)throws Throwable{
 
         try{
-            System.out.println("Started execution"+" "+joinPoint.getSignature().getName());
-            Student result=(Student)joinPoint.proceed();
-            System.out.println("finished execution"+" "+joinPoint.getSignature().getName());
-            result.setName(result.getName().toUpperCase());
+            Object []arr=joinPoint.getArgs();
+            String originalarg=(String)arr[0];
+
+            String modifiedarg=originalarg.toUpperCase();
+
+            Object [] finalarg={
+                modifiedarg
+            };
+
+            System.out.println("target method called 1-------");
+            String result1=(String)joinPoint.proceed(finalarg);
+
+            System.out.println("target method called 2-------");
+            String result2=(String)joinPoint.proceed(finalarg);
+           
             
-            return result;
+            return result2;
 
         }catch(Exception e){
             System.out.println("Exception occured :"+e.getMessage());
-            // return null;
             throw new RuntimeException("Exception thrown");
         }finally{
             System.out.println("Execution Completed Successfully");
