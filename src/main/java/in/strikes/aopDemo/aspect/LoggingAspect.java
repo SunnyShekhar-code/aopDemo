@@ -17,10 +17,22 @@ import in.strikes.aopDemo.dto.Student;
 public class LoggingAspect {
 
 
-    @Before("execution(* in.strikes.aopDemo.service.StudentService.*(*))")
+    // @Before("execution(* in.strikes.aopDemo.service.*.*(..))")
+    // public void logBeforeMethod(){
+    //     System.out.println("Method intercepetd");
+    // }
+
+    @Before("execution(* *.*(..)) && within(in.strikes.aopDemo.service.StudentService)")
     public void logBeforeMethod(){
         System.out.println("Method intercepetd");
     }
+
+    
+
+    // @Before("within(in.strikes.aopDemo.service.StudentService)")
+    // public void logBeforeMethod(){
+    //     System.out.println("Method intercepetd");
+    // }
 
     // @Before("execution(in.strikes.aopDemo.dto.Student in.strikes.aopDemo.service.StudentService.createStudent(in.strikes.aopDemo.dto.Student))")
     // public void logBeforeMethod2(){
