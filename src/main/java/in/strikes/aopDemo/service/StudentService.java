@@ -8,10 +8,10 @@ import in.strikes.aopDemo.dto.Student;
 public class StudentService {
 
     public Student createStudent(Student student){
-        String s="Saved Student";
+        String s="Student Saved";
         System.out.println(s);
-        throw new RuntimeException("Execution failed");
-        // return student;
+        // throw new RuntimeException("Execution failed");
+        return student;
     }
 
     public String dummyMethod(String s){

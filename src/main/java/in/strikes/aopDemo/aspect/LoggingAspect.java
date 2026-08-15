@@ -22,6 +22,11 @@ public class LoggingAspect {
         System.out.println("Method intercepetd");
     }
 
+    @Before("execution(in.strikes.aopDemo.dto.Student in.strikes.aopDemo.service.StudentService.createStudent(in.strikes.aopDemo.dto.Student))")
+    public void logBeforeMethod2(){
+        System.out.println("Method intercepetd");
+    }
+
     // pointcut--> deginator returnType Method/classPath Arguments Exception
 
 
