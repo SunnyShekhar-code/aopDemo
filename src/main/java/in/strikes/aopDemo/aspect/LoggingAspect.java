@@ -22,14 +22,21 @@ public class LoggingAspect {
     //     System.out.println("Method intercepetd");
     // }
 
-    @Before("execution(* *.*(..)) && within(in.strikes.aopDemo.service.StudentService)")
-    public void logBeforeMethod(){
-        System.out.println("Method intercepetd");
-    }
+
+    // @Before("execution(* *.*(..)) && within(in.strikes.aopDemo.service.StudentService)")
+    // public void logBeforeMethod(){
+    //     System.out.println("Method intercepetd");
+    // }
 
     
 
     // @Before("within(in.strikes.aopDemo.service.StudentService)")
+    // public void logBeforeMethod(){
+    //     System.out.println("Method intercepetd");
+    // }
+
+
+    // @Before("@annotation(com.fasterxml.jackson.annotation.JsonKey)")
     // public void logBeforeMethod(){
     //     System.out.println("Method intercepetd");
     // }
@@ -41,8 +48,10 @@ public class LoggingAspect {
 
     // pointcut--> deginator returnType Method/classPath Arguments Exception
 
-    // wildcard --> ultiple method and having method of different arguments && 
+    // wildcard --> multiple method and having method of different arguments && 
     // class and different package and it's package using exection and withiin deginator
+
+    // deginator--> execution , within, annotation, bean
 
 
 
