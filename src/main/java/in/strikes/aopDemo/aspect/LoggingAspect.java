@@ -17,17 +17,22 @@ import in.strikes.aopDemo.dto.Student;
 public class LoggingAspect {
 
 
-    @Before("execution(String in.strikes.aopDemo.service.StudentService.dummyMethod(String))")
+    @Before("execution(* in.strikes.aopDemo.service.StudentService.*(*))")
     public void logBeforeMethod(){
         System.out.println("Method intercepetd");
     }
 
-    @Before("execution(in.strikes.aopDemo.dto.Student in.strikes.aopDemo.service.StudentService.createStudent(in.strikes.aopDemo.dto.Student))")
-    public void logBeforeMethod2(){
-        System.out.println("Method intercepetd");
-    }
+    // @Before("execution(in.strikes.aopDemo.dto.Student in.strikes.aopDemo.service.StudentService.createStudent(in.strikes.aopDemo.dto.Student))")
+    // public void logBeforeMethod2(){
+    //     System.out.println("Method intercepetd");
+    // }
 
     // pointcut--> deginator returnType Method/classPath Arguments Exception
+
+    // wildcard --> ultiple method and having method of different arguments && 
+    // class and different package and it's package using exection and withiin deginator
+
+
 
 
 
