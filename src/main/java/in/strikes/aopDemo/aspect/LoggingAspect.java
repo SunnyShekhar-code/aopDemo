@@ -42,6 +42,12 @@ public class LoggingAspect {
     }
 
 
+    @Before("args(in.strikes.aopDemo.dto.Student) && within(in.strikes.aopDemo.service.*)")
+    public void logBeforeArgumentPass() {
+        System.out.println("Student argument input Method Intercepted");
+    }
+
+
 
 
 
