@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 import in.strikes.aopDemo.dto.Student;
@@ -45,6 +46,46 @@ public class LoggingAspect {
     // public void logBeforeMethod2(){
     //     System.out.println("Method intercepetd");
     // }
+
+    @Pointcut("execution(* in.strikes.aopDemo.controller.*.*(..))")
+    public void controllerLayer(){
+
+    } 
+
+    @Pointcut("execution(* in.strikes.aopDemo.service.*.*(..))")
+    public void serviceLayer(){
+
+    } 
+
+    @Pointcut("within(in.strikes.aopDemo.service..*) && execution(* *(..))")
+    public void logPublicServiceMethod(){
+
+    }
+
+    @Before("logPublicServiceMethod()")
+    public void logBeforeMethod(){
+        System.out.println("Method Intercepted");
+    }
+
+    // @Around("controllerLayer()")
+    // public Object logaround(ProceedingJoinPoint jointpoint)throws Throwable{
+    //     System.out.println("Method intercepted before service");
+    //     try{
+    //         return jointpoint.proceed();
+    //     }catch(Exception e){
+
+    //     }
+    //     return null;
+
+    // }
+
+
+
+
+
+
+
+
 
     // pointcut--> deginator returnType Method/classPath Arguments Exception
 
