@@ -52,20 +52,21 @@ public class LoggingAspect {
 
     } 
 
-    @Pointcut("execution(* in.strikes.aopDemo.service.*.*(..))")
-    public void serviceLayer(){
+    // @Pointcut("execution(* in.strikes.aopDemo.service.*.*(..))")
+    // public void serviceLayer(){
 
-    } 
+    // } 
 
-    @Pointcut("within(in.strikes.aopDemo.service..*) && execution(* *(..))")
-    public void logPublicServiceMethod(){
+    // @Pointcut("within(in.strikes.aopDemo.service..*) && execution(* *(..))")
+    // public void logPublicServiceMethod(){
 
-    }
+    // }
 
-    @Before("logPublicServiceMethod()")
+    @Before("in.strikes.aopDemo.aspect.ApplicationPointCuts.controllerLayer()")
     public void logBeforeMethod(){
         System.out.println("Method Intercepted");
     }
+    
 
     // @Around("controllerLayer()")
     // public Object logaround(ProceedingJoinPoint jointpoint)throws Throwable{

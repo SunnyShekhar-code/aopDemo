@@ -16,8 +16,8 @@ public class StudentService {
         return student;
     }
 
-    public String dummyMethod(String s){
-        System.out.println("dummy method called");
+    public String getStudent(String s){
+        System.out.println("student detail sent");
         return s;
     }
     

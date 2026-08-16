@@ -28,7 +28,7 @@ public class StudentController {
     @GetMapping
     public ResponseEntity<String> dummyMethod(){
         String s="All data sent";
-        return ResponseEntity.ok(studentService.dummyMethod(s));
+        return ResponseEntity.ok(studentService.getStudent(s));
     }
     
 }
