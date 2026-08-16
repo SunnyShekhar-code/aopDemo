@@ -24,9 +24,13 @@ public class ApplicationPointCuts {
 
     }
 
-    @Pointcut("execution(* *.get* (..)")
-    public void getterMethod() {
+    @Pointcut("execution(* *.get*(..))")
+        public void getterMethod() {
+    }
 
+
+    @Pointcut("execution(* *.get*(..)) && serviceLayer()")
+        public void serrviceGetterMethod() {
     }
 
 }
